@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Member} from "@/interfaces";
+import type {Member} from "@/interfaces";
 
 //会員情報リストをステートから取得。
 const memberList = useState<Map<number, Member>>("memberList");

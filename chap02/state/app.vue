@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Member} from "@/interfaces";
+import type {Member} from "@/interfaces";
 
 //会員情報リストをステートとして用意。
 useState<Map<number, Member>>(
@@ -14,5 +14,5 @@ useState<Map<number, Member>>(
 </script>
 
 <template>
-	<BaseSection/>
+	<TheBaseSection/>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Member} from "@/interfaces";
+import type {Member} from "@/interfaces";
 
 //Propsインターフェースの定義。
 interface Props {
@@ -10,15 +10,11 @@ const props = defineProps<Props>();
 //会員情報リストをステートから取得。
 const memberList = useState<Map<number, Member>>("memberList");
 //該当する会員情報の取得。
-const member = computed(
-	(): Member => {
-		return memberList.value.get(props.id) as Member;
-	}
-);
+const member = memberList.value.get(props.id) as Member;
 //noteを加工する算出プロパティ。
 const localNote = computed(
 	(): string => {
-		let localNote = member.value.note;
+		let localNote = member.note;
 		if(localNote == undefined) {
 			localNote = "--";
 		}
@@ -27,7 +23,7 @@ const localNote = computed(
 );
 //［ポイント加算］ボタンをクリックした時のメソッド。
 const pointUp = (): void => {
-	member.value.points++;
+	member.points++;
 }
 </script>
 
