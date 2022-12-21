@@ -25,16 +25,8 @@ const localNote = computed(
 	<h1>会員管理</h1>
 	<nav id="breadcrumbs">
 		<ul>
-			<li>
-				<NuxtLink to="/">
-					TOP
-				</NuxtLink>
-			</li>
-			<li>
-				<NuxtLink to="/member/memberList">
-					会員リスト
-				</NuxtLink>
-			</li>
+			<li><NuxtLink v-bind:to="{name: 'index'}">TOP</NuxtLink></li>
+			<li><NuxtLink v-bind:to="{name: 'member-memberList'}">会員リスト</NuxtLink></li>
 			<li>会員詳細情報</li>
 		</ul>
 	</nav>

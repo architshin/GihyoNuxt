@@ -14,7 +14,7 @@ const member: Member =reactive(
 );
 const onAdd = (): void => {
 	memberList.value.set(member.id, member);
-	router.push("/member/memberList");
+	router.push({name: "member-memberList"});
 };
 </script>
 
@@ -22,8 +22,8 @@ const onAdd = (): void => {
 	<h1>会員管理</h1>
 	<nav id="breadcrumbs">
 		<ul>
-			<li><NuxtLink to="/">TOP</NuxtLink></li>
-			<li><NuxtLink to="/member/memberList">会員リスト</NuxtLink></li>
+			<li><NuxtLink v-bind:to="{name: 'index'}">TOP</NuxtLink></li>
+			<li><NuxtLink v-bind:to="{name: 'member-memberList'}">会員リスト</NuxtLink></li>
 			<li>会員情報追加</li>
 		</ul>
 	</nav>
