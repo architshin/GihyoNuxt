@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import type {Member} from "@/interfaces";
 
-const route = useRoute()
+//ルートオブジェクトを取得。
+const route = useRoute();
 //会員情報リストをステートから取得。
 const memberList = useState<Map<number, Member>>("memberList");
+//会員情報リストから該当会員情報を取得。
 const member = computed(
 	(): Member => {
 		const id = Number(route.params.id);
 		return memberList.value.get(id) as Member;
 	}
 );
+//備考データがない場合の対応。
 const localNote = computed(
 	(): string => {
 		let localNote = "--";
