@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type {Member} from "@/interfaces";
 
+//ルータオブジェクトを取得。
 const router = useRouter();
+//会員情報リストをステートから取得。
 const memberList = useState<Map<number, Member>>("memberList");
-const member: Member =reactive(
+//入力データと同期させるMemberオブジェクトの用意。
+const member: Member = reactive(
 	{
 		id: 0,
 		name: "",
@@ -12,6 +15,7 @@ const member: Member =reactive(
 		note: ""
 	}
 );
+//フォームがサブミットされた時の処理。
 const onAdd = (): void => {
 	memberList.value.set(member.id, member);
 	router.push({name: "member-memberList"});
