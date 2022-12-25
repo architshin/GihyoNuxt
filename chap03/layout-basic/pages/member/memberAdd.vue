@@ -2,7 +2,7 @@
 import type {Member} from "@/interfaces";
 
 definePageMeta({
-	layout: "member",
+	layout: "member"
 });
 
 const router = useRouter();

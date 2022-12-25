@@ -14,6 +14,7 @@ useState<Map<number, Member>>(
 
 <template>
 	<NuxtLayout>
+		<!-- <p>こんにちは</p> -->
 		<NuxtPage/>
 	</NuxtLayout>
 </template>
