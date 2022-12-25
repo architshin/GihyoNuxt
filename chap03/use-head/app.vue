@@ -4,6 +4,7 @@ import type {Member} from "@/interfaces";
 const SITE_TITLE = "ヘッダ変更サンプル";
 
 useHead({
+	// title: SITE_TITLE,
 	titleTemplate: (titleChunk: string|undefined): string => {
 		let title = SITE_TITLE;
 		if(titleChunk != undefined) {

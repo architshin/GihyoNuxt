@@ -4,7 +4,7 @@ import type {Member} from "@/interfaces";
 const PAGE_TITLE = "会員情報追加";
 
 definePageMeta({
-	layout: "member",
+	layout: "member"
 });
 
 useHead({
