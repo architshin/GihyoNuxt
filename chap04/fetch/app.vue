@@ -34,6 +34,6 @@ useState<Map<number, City>>(
 		<h1>fetchサンプル</h1>
 	</header>
 	<main>
-		<RouterView/>
+		<NuxtPage/>
 	</main>
 </template>
