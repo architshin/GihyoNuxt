@@ -41,19 +41,19 @@ const asyncData = useLazyFetch(
 		}
 	}
 );
+const data = asyncData.data;
+const pending = asyncData.pending;
 watchEffect(
 	(): void => {
-		console.log(asyncData.data);
-		console.log(asyncData.pending);
-		if(asyncData.data.value != null) {
-			weatherDescription.value = asyncData.data.value;
+		if(data.value != null) {
+			weatherDescription.value = data.value;
 		}
 	}
-)
+);
 </script>
 
 <template>
-	<p v-if="asyncData.pending">データ取得中…</p>
+	<p v-if="pending">データ取得中…</p>
 	<section v-else>
 		<h2>{{selectedCity.name}}の天気</h2>
 		<p>{{weatherDescription}}</p>
