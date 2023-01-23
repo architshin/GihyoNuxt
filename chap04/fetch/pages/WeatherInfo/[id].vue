@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import type {City} from "@/interfaces";
 
+//ルートオブジェクトを用意、
 const route = useRoute();
+//都市情報リストをステートから取得。
 const cityList = useState<Map<number, City>>("cityList");
+//ルートパラメータをもとに該当都市データをを取得。
 const selectedCity = computed(
 	(): City => {
 		const idNo = Number(route.params.id);
 		return cityList.value.get(idNo) as City;
 	}
 );
+//天気情報のテンプレート変数を用意。
 const weatherDescription = ref("");
 
 //アクセス先URLの基本部分の変数を用意。
@@ -34,7 +38,7 @@ const urlFull = `${weatherInfoUrl}?${queryParams}`;
 //URLに非同期でアクセスしてデータを取得。
 const response = await $fetch(urlFull) as any;
 // console.log(response);
-//お天気情報JSONから天気データを取得し、テンプレート変数に格納。
+//天気情報JSONから天気データを取得し、テンプレート変数に格納。
 const weatherArray = response.weather;
 const weather = weatherArray[0];
 weatherDescription.value = weather.description;
