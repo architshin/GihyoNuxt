@@ -13,7 +13,7 @@ const selectedCity = computed(
 
 const asyncData = await useAsyncData(
 	`/WeatherInfo/${route.params.id}`,
-	async () => {
+	(): Promise<any> => {
 		const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
 		const params:{
 			lang: string,
@@ -27,12 +27,12 @@ const asyncData = await useAsyncData(
 		}
 		const queryParams = new URLSearchParams(params);
 		const urlFull = `${weatherInfoUrl}?${queryParams}`;
-		const response = await $fetch(urlFull) as any;
+		const response = $fetch(urlFull);
 		return response;
 	},
 	{
 		// pick: ["weather"],
-		transform: (data): string => {
+		transform: (data: any): string => {
 			const weatherArray = data.weather;
 			const weather = weatherArray[0];
 			return weather.description;
