@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {City} from "@/interfaces";
 
-//会員情報リストをステートから取得。
+//都市情報リストをステートから取得。
 const cityList = useState<Map<number, City>>("cityList");
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {City} from "@/interfaces";
 
-//会員情報リストをステートとして用意。
+//都市情報リストをステートとして用意。
 useState<Map<number, City>>(
 	"cityList",
 	(): Map<number, City> => {
