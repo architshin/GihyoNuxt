@@ -5,7 +5,7 @@ export const useWeatherInfoFetcher = (city: City) => {
 	const asyncData = useLazyAsyncData(
 		`useWeatherInfoFetcher-${city.id}`,
 		(): Promise<any> => {
-			const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
+			// const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
 			const params:{
 				lang: string,
 				q: string,
@@ -19,7 +19,8 @@ export const useWeatherInfoFetcher = (city: City) => {
 				appId: config.weathermapAppid
 			}
 			const queryParams = new URLSearchParams(params);
-			const urlFull = `${weatherInfoUrl}?${queryParams}`;
+			// const urlFull = `${weatherInfoUrl}?${queryParams}`;
+			const urlFull = `${config.weatherInfoUrl}?${queryParams}`;
 			const response = $fetch(urlFull);
 			return response;
 		},
