@@ -1,29 +1,30 @@
 import type {City} from "@/interfaces";
 
 export const useWeatherInfoFetcher = (city: City) => {
-	//クエリパラメータの元データとなるオブジェクトリテラルを用意。
-	const params:{
-		lang: string,
-		q: string,
-		appId: string
-	} =
-	{
-		//言語設定のクエリパラメータ
-		lang: "ja",
-		//都市を表すクエリパラメータ。
-		q: city.q,
-		//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-		appId: "913136635cfa3182bbe18e34ffd44849"
-	}
-
-	const asyncData = useLazyFetch(
-		"http://api.openweathermap.org/data/2.5/weather",
+	const config = useRuntimeConfig();
+	const asyncData = useLazyAsyncData(
+		`useWeatherInfoFetcher-${city.id}`,
+		(): Promise<any> => {
+			const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
+			const params:{
+				lang: string,
+				q: string,
+				appId: string
+			} =
+			{
+				lang: "ja",
+				q: city.q,
+				//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
+				// appId: "xxxxxx"
+				appId: config.weathermapAppid
+			}
+			const queryParams = new URLSearchParams(params);
+			const urlFull = `${weatherInfoUrl}?${queryParams}`;
+			const response = $fetch(urlFull);
+			return response;
+		},
 		{
-			params: params,
-			default: (): string => {
-				return "";
-			},
-			transform: (data: any): string => {
+			transform: (data): string => {
 				const weatherArray = data.weather;
 				const weather = weatherArray[0];
 				return weather.description;
@@ -32,3 +33,29 @@ export const useWeatherInfoFetcher = (city: City) => {
 	);
 	return asyncData;
 };
+// export const useWeatherInfoFetcher = (city: City) => {
+// 	const config = useRuntimeConfig();
+// 	const params:{
+// 		lang: string,
+// 		q: string,
+// 		appId: string
+// 	} =
+// 	{
+// 		lang: "ja",
+// 		q: city.q,
+// 		appId: config.weathermapAppid
+// 	}
+// 	const asyncData = useLazyFetch(
+// 		"http://api.openweathermap.org/data/2.5/weather",
+// 		{
+// 			key: `useWeatherInfoFetcher-${city.id}`,
+// 			params: params,
+// 			transform: (data: any): string => {
+// 				const weatherArray = data.weather;
+// 				const weather = weatherArray[0];
+// 				return weather.description;
+// 			}
+// 		}
+// 	);
+// 	return asyncData;
+// };

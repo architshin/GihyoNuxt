@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type {City} from "@/interfaces";
-import { useWeatherInfoFetcher } from "~~/composables/useWeatherInfoFetcher";
 
 const route = useRoute();
 const cityList = useState<Map<number, City>>("cityList");
@@ -10,17 +9,9 @@ const selectedCity = computed(
 		return cityList.value.get(idNo) as City;
 	}
 );
-const weatherDescription = ref("");
 const asyncData = useWeatherInfoFetcher(selectedCity.value);
-const data = asyncData.data;
+const weatherDescription = asyncData.data;
 const pending = asyncData.pending;
-watchEffect(
-	(): void => {
-		if(data.value != null) {
-			weatherDescription.value = data.value;
-		}
-	}
-);
 </script>
 
 <template>
