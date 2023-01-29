@@ -5,7 +5,7 @@ import type {City} from "@/interfaces";
 const route = useRoute();
 //都市情報リストをステートから取得。
 const cityList = useState<Map<number, City>>("cityList");
-//ルートパラメータをもとに該当都市データをを取得。
+//ルートパラメータをもとに該当都市データを取得。
 const selectedCity = computed(
 	(): City => {
 		const idNo = Number(route.params.id);
