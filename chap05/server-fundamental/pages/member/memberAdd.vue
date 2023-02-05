@@ -6,7 +6,6 @@ definePageMeta({
 });
 
 const router = useRouter();
-const memberList = useState<Map<number, Member>>("memberList");
 const member: Member =reactive(
 	{
 		id: 0,
@@ -17,7 +16,6 @@ const member: Member =reactive(
 	}
 );
 const onAdd = (): void => {
-	memberList.value.set(member.id, member);
 	router.push({name: "member-memberList"});
 };
 </script>
