@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {City} from "@/interfaces";
 
-const asyncData = await useCityListFetcher();
+const asyncData = await useFetch("/api/getCityList");
 if(asyncData.data.value != null) {
 	usePrepareCityListState(asyncData.data.value);
 }
