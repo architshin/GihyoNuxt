@@ -1,10 +1,14 @@
 import type {Member, ReturnJSONMembers} from "@/interfaces";
-import {createMemberList} from "@/membersDB";
 
 export default defineEventHandler(
-	(event): ReturnJSONMembers => {
+	async (event): Promise<ReturnJSONMembers> => {
+		let memberList = new Map<number, Member>();
+		const storage = useStorage();
+		const memberListStrage = await storage.getItem("member-management:members");
+		if(memberListStrage != undefined) {
+			memberList = new Map<number, Member>(memberListStrage);
+		}
 		const params = event.context.params;
-		const memberList = createMemberList();
 		const idNo = Number(params.id);
 		const member = memberList.get(idNo) as Member;
 		return {
