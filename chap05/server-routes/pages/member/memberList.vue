@@ -5,9 +5,18 @@ definePageMeta({
 	layout: "member"
 });
 
-const asyncData = useLazyFetch("/api/getMemberList");
-const memberList = asyncData.data;
+const asyncData = useLazyFetch("/member-management/members");
+const responseData = asyncData.data;
 const pending = asyncData.pending;
+const memberList = computed(
+	(): Member[] => {
+		let returnList: Member[] = [];
+		if(responseData.value != null) {
+			returnList = responseData.value.data;
+		}
+		return returnList;
+	}
+);
 </script>
 
 <template>

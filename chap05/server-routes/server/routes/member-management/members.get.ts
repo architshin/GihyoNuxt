@@ -1,10 +1,13 @@
-import type {Member} from "@/interfaces";
+import type {ReturnJSONMembers} from "@/interfaces";
 import {createMemberList} from "@/membersDB";
 
 export default defineEventHandler(
-	(event): Member[] => {
+	(event): ReturnJSONMembers => {
 		const memberList = createMemberList();
 		const memberListValues =  memberList.values();
-		return Array.from(memberListValues);
+		return {
+			result: 1,
+			data: Array.from(memberListValues)
+		}
 	}
 );

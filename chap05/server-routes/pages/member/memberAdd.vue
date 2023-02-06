@@ -19,7 +19,7 @@ const pending = ref(false);
 const onAdd = async () => {
 	pending.value = true;
 	const asyncData = await useFetch(
-		"/api/addMemberInfo",
+		"/member-management/members",
 		{
 			method: "POST",
 			body: member

@@ -1,21 +1,23 @@
 <script setup lang="ts">
+import type {Member} from "@/interfaces";
+
 definePageMeta({
 	layout: "member"
 });
 
 const route = useRoute()
-const asyncData = useLazyFetch(
-	"/api/getOneMemberInfo",
-	{
-		query: {id: route.params.id}
+const asyncData = useLazyFetch(`/member-management/members/${route.params.id}`);
+const responseData = asyncData.data;
+const pending = asyncData.pending;
+const member = computed(
+	(): Member|undefined => {
+		return responseData.value?.data[0];
 	}
 );
-const member = asyncData.data;
-const pending = asyncData.pending;
 const localNote = computed(
 	(): string => {
 		let localNote = "--";
-		if(member.value != null && member.value.note != undefined) {
+		if(member.value != undefined && member.value.note != undefined) {
 			localNote = member.value.note;
 		}
 		return localNote;
