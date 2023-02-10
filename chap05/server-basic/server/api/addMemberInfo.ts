@@ -3,7 +3,8 @@ export default defineEventHandler(
 		const body = await readBody(event);
 		console.log(body);
 		return {
-			result: 1
+			result: 1,
+			member: body
 		};
 	}
 );
