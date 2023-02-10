@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type {Member} from "@/interfaces";
-
 definePageMeta({
 	layout: "member"
 });

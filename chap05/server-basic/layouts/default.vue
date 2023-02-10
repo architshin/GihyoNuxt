@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<h1>Serverサンプル</h1>
+		<h1>サーバサンプル</h1>
 	</header>
 	<main>
 		<slot/>
