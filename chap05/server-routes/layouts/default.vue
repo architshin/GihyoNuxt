@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<h1>Serverルートサンプル</h1>
+		<h1>サーバサイドルーティングサンプル</h1>
 	</header>
 	<main>
 		<slot/>

@@ -5,9 +5,10 @@ export default defineEventHandler(
 	(event): ReturnJSONMembers => {
 		const memberList = createMemberList();
 		const memberListValues =  memberList.values();
+		const memberListArray = Array.from(memberListValues);
 		return {
 			result: 1,
-			data: Array.from(memberListValues)
+			data: memberListArray
 		}
 	}
 );

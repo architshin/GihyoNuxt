@@ -10,8 +10,11 @@ const responseData = asyncData.data;
 const pending = asyncData.pending;
 const memberList = computed(
 	(): Member[] => {
+		//空の会員リスト配列を用意。
 		let returnList: Member[] = [];
+		//レスポンスJSONデータがnullでないならば…
 		if(responseData.value != null) {
+			//レスポンスJSONデータのdataプロパティを取得。
 			returnList = responseData.value.data;
 		}
 		return returnList;
