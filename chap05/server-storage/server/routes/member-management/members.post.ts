@@ -6,9 +6,9 @@ export default defineEventHandler(
 		const member = body as Member;
 		let memberList = new Map<number, Member>();
 		const storage = useStorage();
-		const memberListStrage = await storage.getItem("member-management:members");
-		if(memberListStrage != undefined) {
-			memberList = new Map<number, Member>(memberListStrage);
+		const memberListStorage = await storage.getItem("member-management:members");
+		if(memberListStorage != undefined) {
+			memberList = new Map<number, Member>(memberListStorage);
 		}
 		memberList.set(member.id, member);
 		await storage.setItem("member-management:members", [...memberList]);
