@@ -6,7 +6,7 @@ const onResetButtonClick = (error: any) => {
 
 <template>
 	<NuxtErrorBoundary>
-		<ErrorGenerator/>
+		<ErrorGeneratorBasic/>
 		<template v-slot:error="errorLog">
 			<p>エラーが発生しました!</p>
 			<p>{{errorLog.error}}</p>
