@@ -16,6 +16,11 @@
 			</NuxtLink>
 		</li>
 		<li>
+			<NuxtLink v-bind:to="{name: 'errorHandler404'}">
+				404エラー発生実験
+			</NuxtLink>
+		</li>
+		<li>
 			<NuxtLink v-bind:to="{name: 'errorHandlerServer'}">
 				サーバエラー発生実験
 			</NuxtLink>
