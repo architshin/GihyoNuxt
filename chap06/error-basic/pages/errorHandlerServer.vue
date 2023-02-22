@@ -1,5 +1,5 @@
 <template>
-	<ErrorGeneratorFatal/>
+	<ErrorGeneratorServer/>
 	<p>
 		<NuxtLink v-bind:to="{name: 'index'}">
 			戻る
