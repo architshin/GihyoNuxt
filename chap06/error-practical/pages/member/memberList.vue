@@ -22,7 +22,7 @@ const isEmptyList = computed(
 		return memberList.value.length == 0;
 	}
 );
-const isServerError = computed(
+const noServerError = computed(
 	(): boolean => {
 		let returnVal = false;
 		if(asyncData.error.value == null && responseData.value != null && responseData.value.result == 1) {
@@ -47,7 +47,7 @@ const isServerError = computed(
 		</p>
 		<p v-if="pending">データ取得中…</p>
 		<template v-else>
-			<section v-if="isServerError">
+			<section v-if="noServerError">
 				<ul>
 					<li v-if="isEmptyList">会員情報は存在しません。</li>
 					<li
