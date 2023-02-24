@@ -16,7 +16,7 @@ const member: Member =reactive(
 	}
 );
 const pending = ref(false);
-const isServerError = ref(false);
+const noServerError = ref(true);
 const onAdd = async () => {
 	pending.value = true;
 	const asyncData = await useFetch(
@@ -31,7 +31,7 @@ const onAdd = async () => {
 	}
 	else {
 		pending.value = false;
-		isServerError.value = true;
+		noServerError.value = false;
 	}
 };
 </script>
@@ -48,11 +48,11 @@ const onAdd = async () => {
 		<h2>会員情報追加</h2>
 		<p v-if="pending">データ送信中…</p>
 		<template v-else>
-			<p v-if="isServerError">
-				サーバ処理中に障害が発生しました。もう一度登録を行なってください。
+			<p v-if="noServerError">
+				情報を入力し、登録ボタンをクリックしてください。
 			</p>
 			<p v-else>
-				情報を入力し、登録ボタンをクリックしてください。
+				サーバ処理中に障害が発生しました。もう一度登録を行なってください。
 			</p>
 			<form v-on:submit.prevent="onAdd">
 				<dl>
