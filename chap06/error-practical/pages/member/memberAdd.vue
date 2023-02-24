@@ -16,6 +16,7 @@ const member: Member =reactive(
 	}
 );
 const pending = ref(false);
+const isServerError = ref(false);
 const onAdd = async () => {
 	pending.value = true;
 	const asyncData = await useFetch(
@@ -25,8 +26,12 @@ const onAdd = async () => {
 			body: member
 		}
 	);
-	if(asyncData.data.value != null && asyncData.data.value.result == 1) {
+	if(asyncData.error.value == null && asyncData.data.value != null && asyncData.data.value.result == 1) {
 		router.push({name: "member-memberList"});
+	}
+	else {
+		pending.value = false;
+		isServerError.value = true;
 	}
 };
 </script>
@@ -43,7 +48,10 @@ const onAdd = async () => {
 		<h2>会員情報追加</h2>
 		<p v-if="pending">データ送信中…</p>
 		<template v-else>
-			<p>
+			<p v-if="isServerError">
+				サーバ処理中に障害が発生しました。もう一度登録を行なってください。
+			</p>
+			<p v-else>
 				情報を入力し、登録ボタンをクリックしてください。
 			</p>
 			<form v-on:submit.prevent="onAdd">
