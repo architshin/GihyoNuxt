@@ -2,18 +2,34 @@ import type {Member, ReturnJSONMembers} from "@/interfaces";
 
 export default defineEventHandler(
 	async (event): Promise<ReturnJSONMembers> => {
-		const params = event.context.params;
-		let memberList = new Map<number, Member>();
-		const storage = useStorage();
-		const memberListStorage = await storage.getItem("member-management:members");
-		if(memberListStorage != undefined) {
-			memberList = new Map<number, Member>(memberListStorage);
+		let result = 0;
+		const memberListArray: Member[] = [];
+		
+		// throw createError("擬似エラー発生");
+		try{
+			// throw createError("擬似エラー発生");
+			const params = event.context.params;
+			let memberList = new Map<number, Member>();
+			const storage = useStorage();
+			const memberListStorage = await storage.getItem("member-management:members");
+			if(memberListStorage != undefined) {
+				memberList = new Map<number, Member>(memberListStorage);
+			}
+			if(params != undefined) {
+				const idNo = Number(params.id);
+				const member = memberList.get(idNo);
+				result = 1;
+				if(member != undefined) {
+					memberListArray[0] = member;
+				}
+			}
 		}
-		const idNo = Number(params.id);
-		const member = memberList.get(idNo) as Member;
+		catch(err) {
+			console.log(err);
+		}
 		return {
-			result: 1,
-			data: [member]
+			result: result,
+			data: memberListArray
 		};
 	}
 );
