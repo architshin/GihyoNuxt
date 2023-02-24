@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const onResetButtonClick = (error: any) => {
+const onResetButtonClick = (error: Ref) => {
 	error.value = null;
 }
 </script>
@@ -7,10 +7,10 @@ const onResetButtonClick = (error: any) => {
 <template>
 	<NuxtErrorBoundary>
 		<ErrorGeneratorBasic/>
-		<template v-slot:error="errorLog">
+		<template v-slot:error="errorProps">
 			<p>エラーが発生しました!</p>
-			<p>{{errorLog.error}}</p>
-			<button v-on:click="onResetButtonClick(errorLog.error)">エラーを解消</button>
+			<p>{{errorProps.error}}</p>
+			<button v-on:click="onResetButtonClick(errorProps.error)">エラーを解消</button>
 		</template>
 	</NuxtErrorBoundary>
 	<p>
