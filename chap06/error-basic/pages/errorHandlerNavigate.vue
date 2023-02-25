@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const onResetButtonClick = async (error: any) => {
+const onResetButtonClick = async (error: Ref): Promise<void> => {
 	await navigateTo("/");
 	error.value = null;
 }
@@ -8,10 +8,10 @@ const onResetButtonClick = async (error: any) => {
 <template>
 	<NuxtErrorBoundary>
 		<ErrorGeneratorImmediate/>
-		<template v-slot:error="errorLog">
+		<template v-slot:error="errorProps">
 			<p>エラーが発生しました!</p>
-			<p>{{errorLog.error}}</p>
-			<button v-on:click="onResetButtonClick(errorLog.error)">エラーを解消</button>
+			<p>{{errorProps.error}}</p>
+			<button v-on:click="onResetButtonClick(errorProps.error)">エラーを解消</button>
 		</template>
 	</NuxtErrorBoundary>
 	<p>
