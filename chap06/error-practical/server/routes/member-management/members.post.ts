@@ -2,13 +2,13 @@ import type {Member, ReturnJSONMembers} from "@/interfaces";
 
 export default defineEventHandler(
 	async (event): Promise<ReturnJSONMembers> => {
-		let result = 0;
+		let resultVal = 0;
 		const memberListArray: Member[] = [];
 		
 		// throw createError("擬似エラー発生");
 		try{
-			// throw createError("擬似エラー発生");
 			const body = await readBody(event);
+			// throw createError("擬似エラー発生");
 			const member = body as Member;
 			let memberList = new Map<number, Member>();
 			const storage = useStorage();
@@ -19,13 +19,13 @@ export default defineEventHandler(
 			memberList.set(member.id, member);
 			await storage.setItem("member-management:members", [...memberList]);
 			memberListArray[0] = member;
-			result = 1;
+			resultVal = 1;
 		}
 		catch(err) {
 			console.log(err);
 		}
 		return {
-			result: result,
+			result: resultVal,
 			data: memberListArray
 		};
 	}
