@@ -1,7 +1,5 @@
 export default defineEventHandler(
 	(event): never => {
-		throw createError({
-			message: "サーバ側でのエラー発生。"
-		});
+		throw createError("サーバ側でのエラー発生。");
 	}
 );

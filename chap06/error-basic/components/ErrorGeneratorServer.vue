@@ -1,8 +1,9 @@
 <script setup lang="ts">
 const onThrowsErrorClick = async (): Promise<void> => {
+	// const asyncData = await useFetch("https://httpbin.org/status/500");
 	const asyncData = await useFetch("/api/generateError");
-	if(asyncData.error.value != null) {
-		const errorValue = asyncData.error.value;
+	const errorValue = asyncData.error.value;
+	if(errorValue != null) {
 		throw createError({
 			message: `サーバでエラーが発生しました: ${errorValue.message}`,
 			statusCode: errorValue.statusCode,
