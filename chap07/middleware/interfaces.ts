@@ -10,3 +10,8 @@ export interface ReturnJSONMembers {
 	result: number;
 	data: Member[];
 }
+
+export interface ReturnJSONAuth {
+	result: number;
+	token: string;
+}
