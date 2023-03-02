@@ -1,6 +1,7 @@
 <template>
 	<header>
 		<h1>ミドルウェアサンプル</h1>
+		<TheLoggedInSection/>
 	</header>
 	<main>
 		<slot/>

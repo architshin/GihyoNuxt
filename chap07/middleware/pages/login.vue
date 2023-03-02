@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const router = useRouter();
+definePageMeta({
+	layout: "loggedout"
+});
 
 const loginId = ref("");
 const password = ref("");
@@ -19,8 +21,12 @@ const onLoginButtonClick = async (): Promise<void> => {
 		}
 	);
 	if(asyncData.error.value == null && asyncData.data.value != null && asyncData.data.value.result == 1) {
-		if(asyncData.data.value.token != "") {
-			router.push({name: "/"});
+		if(asyncData.data.value.token != "" && asyncData.data.value.user != null) {
+			const loginUserCookie = useCookie("loginUser");
+			loginUserCookie.value = JSON.stringify(asyncData.data.value!.user!);
+			const loginTokenCookie = useCookie("loginToken");
+			loginTokenCookie.value = asyncData.data.value!.token!;
+			await navigateTo("/");
 
 		}
 		else {
@@ -38,7 +44,7 @@ const onLoginButtonClick = async (): Promise<void> => {
 
 <template>
 	<h1>ログイン</h1>
-	<p v-if="pending">データ送信中…</p>
+	<p v-if="pending">ログイン中…</p>
 	<template v-else>
 		<p v-if="authFailed">ログインIDまたはパスワードが違います。</p>
 		<p v-if="noServerError">IDとパスワードを入力してログインしてください。</p>
