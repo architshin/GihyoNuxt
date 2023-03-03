@@ -1,6 +1,17 @@
 <script setup lang="ts">
+// console.log("index.vue started");
 definePageMeta({
 	middleware: ["loggedin-check"]
+	// middleware: (to, from) => {
+	// 	const loginTokenCookie = useCookie("loginToken");
+	// 	const loginUserCookie = useCookie("loginUser");
+	// 	if(loginTokenCookie.value  == null || loginUserCookie.value == null) {
+	// 		return navigateTo("/login");
+	// 	}
+	// 	else {
+	// 		return;
+	// 	}
+	// }
 });
 // const loginTokenCookie = useCookie("loginToken");
 // const loginUserCookie = useCookie("loginUser");
