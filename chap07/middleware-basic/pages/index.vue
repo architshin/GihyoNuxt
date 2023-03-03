@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-	middleware: "loggedin-check"
+	middleware: ["loggedin-check"]
 });
 // const loginTokenCookie = useCookie("loginToken");
 // const loginUserCookie = useCookie("loginUser");

@@ -3,7 +3,7 @@ import type {Member} from "@/interfaces";
 
 definePageMeta({
 	layout: "member",
-	middleware: "loggedin-check"
+	middleware: ["loggedin-check"]
 });
 
 const route = useRoute()
