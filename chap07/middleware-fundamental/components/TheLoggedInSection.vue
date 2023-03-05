@@ -1,10 +1,11 @@
 <script setup lang="ts">
-const loginUserCookie = useCookie("loginUser");
-const loginUser = loginUserCookie.value as any;
+import type {User} from "@/interfaces";
+
+const loginUser = useCookie<User|null>("loginUser");
 </script>
 
 <template>
-	<section v-if="loginUserCookie">
+	<section v-if="loginUser">
 		<p>{{loginUser.name}}さんがログイン中</p>
 		<p><NuxtLink v-bind:to="{name: 'logout'}">ログアウト</NuxtLink></p>
 	</section>

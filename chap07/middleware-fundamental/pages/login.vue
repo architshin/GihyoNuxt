@@ -1,15 +1,30 @@
 <script setup lang="ts">
+import type {User} from "@/interfaces";
+
 definePageMeta({
+	//レイアウトをloggedoutに設定。
 	layout: "loggedout"
 });
 
+//ログイン入力コントール用テンプレート変数。
 const loginId = ref("");
+//パスワード入力コントール用テンプレート変数。
 const password = ref("");
+//ペンディングかどうかを表すテンプレート変数。
 const pending = ref(false);
+//Web API側でエラーがないことを表すテンプレート変数。
 const noServerError = ref(true);
+//認証が失敗したことを表すテンプレート変数。
 const authFailed = ref(false);
+//ログインボタンクリック時の処理メソッド。
 const onLoginButtonClick = async (): Promise<void> => {
+	//ペンディングをtrueに変更。
 	pending.value = true;
+	//authFailedを初期値に変更。
+	authFailed.value = false;
+	//noServerErrorを初期値に変更。
+	noServerError.value = true;
+	//ログインデータのPOST送信。
 	const asyncData = await useFetch(
 		"/user-management/auth",
 		{
@@ -20,25 +35,30 @@ const onLoginButtonClick = async (): Promise<void> => {
 			}
 		}
 	);
+	//Web API側の処理が成功したならば…
 	if(asyncData.error.value == null && asyncData.data.value != null && asyncData.data.value.result == 1) {
+		//認証が通ったならば…
 		if(asyncData.data.value.token != "" && asyncData.data.value.user != null) {
-			const loginUserCookie = useCookie("loginUser");
-			loginUserCookie.value = JSON.stringify(asyncData.data.value!.user!);
-			const loginTokenCookie = useCookie("loginToken");
-			loginTokenCookie.value = asyncData.data.value!.token!;
+			//ログインユーザ情報をクッキーに格納。
+			const loginUserCookie = useCookie<User|null>("loginUser");
+			loginUserCookie.value = asyncData.data.value.user;
+			//ログイントークン文字列をクッキーに格納。
+			const loginTokenCookie = useCookie<string|null>("loginToken");
+			loginTokenCookie.value = asyncData.data.value.token;
+			//トップページに遷移
 			await navigateTo("/");
-
 		}
+		//認証が通らなかった場合…
 		else {
 			pending.value = false;
 			authFailed.value = true;
 		}
 	}
+	//Web API側の処理が失敗した場合…
 	else {
 		pending.value = false;
 		noServerError.value = false;
 	}
-
 };
 </script>
 

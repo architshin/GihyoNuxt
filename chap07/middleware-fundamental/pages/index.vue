@@ -3,8 +3,8 @@
 definePageMeta({
 	middleware: ["loggedin-check"]
 	// middleware: (to, from) => {
-	// 	const loginTokenCookie = useCookie("loginToken");
-	// 	const loginUserCookie = useCookie("loginUser");
+	// 	const loginTokenCookie = useCookie<string|null>("loginToken");
+	// 	const loginUserCookie = useCookie<User|null>("loginUser");
 	// 	if(loginTokenCookie.value  == null || loginUserCookie.value == null) {
 	// 		return navigateTo("/login");
 	// 	}
@@ -13,8 +13,8 @@ definePageMeta({
 	// 	}
 	// }
 });
-// const loginTokenCookie = useCookie("loginToken");
-// const loginUserCookie = useCookie("loginUser");
+// const loginTokenCookie = useCookie<string|null>("loginToken");
+// const loginUserCookie = useCookie<User|null>("loginUser");
 // if(loginTokenCookie.value  == null || loginUserCookie.value == null) {
 // 	await navigateTo("/login");
 // }
