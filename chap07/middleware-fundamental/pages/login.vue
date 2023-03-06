@@ -45,7 +45,7 @@ const onLoginButtonClick = async (): Promise<void> => {
 			//ログイントークン文字列をクッキーに格納。
 			const loginTokenCookie = useCookie<string|null>("loginToken");
 			loginTokenCookie.value = asyncData.data.value.token;
-			//トップページに遷移
+			//トップ画面に遷移
 			await navigateTo("/");
 		}
 		//認証が通らなかった場合…
