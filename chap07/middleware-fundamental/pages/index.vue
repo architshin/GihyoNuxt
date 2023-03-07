@@ -4,11 +4,15 @@
 // console.log("index.vue started");
 definePageMeta({
 	middleware: ["loggedin-check"]
+	// middleware: ["logging", "loggedin-check"]
+	// middleware: ["loggedin-check", "logging"]
 	// middleware: (to, from) => {
 	// 	const loginTokenCookie = useCookie<string|null>("loginToken");
 	// 	const loginUserCookie = useCookie<User|null>("loginUser");
 	// 	if(loginTokenCookie.value  == null || loginUserCookie.value == null) {
 	// 		return navigateTo("/login");
+	// 		// return abortNavigation();
+	// 		// return abortNavigation(new Error());
 	// 	}
 	// 	else {
 	// 		return;
