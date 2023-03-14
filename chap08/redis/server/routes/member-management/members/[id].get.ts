@@ -9,7 +9,7 @@ export default defineEventHandler(
 			const params = event.context.params;
 			let memberList = new Map<number, Member>();
 			const storage = useStorage();
-			const memberListStorage = await storage.getItem("member-management:members");
+			const memberListStorage = await storage.getItem("redis:member-management_members");
 			if(memberListStorage != undefined) {
 				memberList = new Map<number, Member>(memberListStorage);
 			}
