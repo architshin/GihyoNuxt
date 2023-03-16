@@ -5,4 +5,4 @@ export default defineNuxtConfig({
 		"/ssg": {prerender: true},
 		"/isg": {swr: 60}
 	}
-})
+});
