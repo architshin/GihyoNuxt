@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<h1>ミドルウェアサンプル</h1>
+		<h1>Redis連携サンプル</h1>
 	</header>
 	<main>
 		<slot/>
