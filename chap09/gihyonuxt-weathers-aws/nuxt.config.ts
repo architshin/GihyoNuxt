@@ -5,5 +5,8 @@ export default defineNuxtConfig({
 			weatherInfoUrl: "https://api.openweathermap.org/data/2.5/weather",
 			weathermapAppid: "xxxxxx"
 		}
+	},
+	nitro: {
+		preset: "aws-lambda"
 	}
 })
