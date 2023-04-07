@@ -1,9 +1,3 @@
-<script setup lang="ts">
-definePageMeta({
-	middleware: ["loggedin-check"]
-});
-</script>
-
 <template>
 	<h1>TOP</h1>
 	<nav id="breadcrumbs">
