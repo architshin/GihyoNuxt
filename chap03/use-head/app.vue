@@ -12,6 +12,7 @@ useHead({
 		}
 		return title;
 	}
+	// titleTemplate: `%s | ${SITE_TITLE}`
 });
 
 useState<Map<number, Member>>(
