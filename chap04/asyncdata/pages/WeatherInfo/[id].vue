@@ -23,7 +23,8 @@ const asyncData = await useAsyncData(
 		{
 			lang: "ja",
 			q: selectedCity.value.q,
-			appId: "913136635cfa3182bbe18e34ffd44849"
+			//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
+			appId: "xxxxxx"
 		}
 		const queryParams = new URLSearchParams(params);
 		const urlFull = `${weatherInfoUrl}?${queryParams}`;

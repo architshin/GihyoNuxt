@@ -20,7 +20,7 @@ const params:{
 	lang: "ja",
 	q: selectedCity.value.q,
 	//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-	appId: "913136635cfa3182bbe18e34ffd44849"
+	appId: "xxxxxx"
 }
 
 const asyncData = await useFetch(
