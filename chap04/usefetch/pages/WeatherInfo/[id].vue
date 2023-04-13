@@ -24,7 +24,7 @@ const params:{
 }
 
 const asyncData = await useFetch(
-	"http://api.openweathermap.org/data/2.5/weather",
+	"https://api.openweathermap.org/data/2.5/weather",
 	{
 		key: `/WeatherInfo/${route.params.id}`,
 		query: params,
