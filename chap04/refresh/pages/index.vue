@@ -12,7 +12,7 @@ const selectedCity = ref(selectedCityInit);
 
 const asyncData = await useAsyncData(
 	(): Promise<any> => {
-		const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
+		const weatherInfoUrl = "https://api.openweathermap.org/data/2.5/weather";
 		const params:{
 			lang: string,
 			q: string,
