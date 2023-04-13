@@ -16,7 +16,7 @@ const selectedCity = computed(
 const weatherDescription = ref("");
 
 //アクセス先URLの基本部分の変数を用意。
-const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
+const weatherInfoUrl = "https://api.openweathermap.org/data/2.5/weather";
 //クエリパラメータの元データとなるオブジェクトリテラルを用意。
 const params:{
 	lang: string,
@@ -29,7 +29,7 @@ const params:{
 	//都市を表すクエリパラメータ。
 	q: selectedCity.value.q,
 	//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-	appId: "913136635cfa3182bbe18e34ffd44849"
+	appId: "xxxxxx"
 }
 //クエリパラメータを生成。
 const queryParams = new URLSearchParams(params);
