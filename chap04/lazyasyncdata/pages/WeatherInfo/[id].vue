@@ -13,7 +13,7 @@ const selectedCity = computed(
 const asyncData = useLazyAsyncData(
 	`/WeatherInfo/${route.params.id}`,
 	(): Promise<any> => {
-		const weatherInfoUrl = "http://api.openweathermap.org/data/2.5/weather";
+		const weatherInfoUrl = "https://api.openweathermap.org/data/2.5/weather";
 		const params:{
 			lang: string,
 			q: string,
