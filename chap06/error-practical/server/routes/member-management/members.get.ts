@@ -8,10 +8,10 @@ export default defineEventHandler(
 		// throw createError("擬似エラー発生");
 		try{
 			const storage = useStorage();
-			const memberListStorage = await storage.getItem("member-management:members");
+			const memberListStorage = await storage.getItem("local:member-management_members");
 			// throw createError("擬似エラー発生");
 			if(memberListStorage != undefined) {
-				memberList = new Map<number, Member>(memberListStorage);
+				memberList = new Map<number, Member>(memberListStorage as any);
 			}
 			resultVal = 1;
 		}
