@@ -12,12 +12,12 @@ export default defineEventHandler(
 			const member = body as Member;
 			let memberList = new Map<number, Member>();
 			const storage = useStorage();
-			const memberListStorage = await storage.getItem("member-management:members");
+			const memberListStorage = await storage.getItem("local:member-management_members");
 			if(memberListStorage != undefined) {
-				memberList = new Map<number, Member>(memberListStorage);
+				memberList = new Map<number, Member>(memberListStorage as any);
 			}
 			memberList.set(member.id, member);
-			await storage.setItem("member-management:members", [...memberList]);
+			await storage.setItem("local:member-management_members", [...memberList]);
 			memberListArray[0] = member;
 			resultVal = 1;
 		}
