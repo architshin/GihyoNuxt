@@ -11,7 +11,7 @@ export default defineEventHandler(
 			// throw createError("擬似エラー発生。");
 			//リクエストボディを取得。
 			const body = await readBody(event);
-			//この時点でWeb API側の処理は成功とみなす。
+			//この時点でエンドポイント側の処理は成功とみなす。
 			resultVal = 1;
 			//ログインIDとパスワードが正しければ…
 			if(body.loginId == "bow" && body.password == "wow") {
