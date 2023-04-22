@@ -15,7 +15,7 @@ export default defineEventHandler(
 			resultVal = 1;
 			//ログインIDとパスワードが正しければ…
 			if(body.loginId == "bow" && body.password == "wow") {
-				//ログイントークンを生成。
+				//アクセストークンを生成。
 				tokenVal = "abcsefghijklmn";
 				//ログインユーザ情報を格納。
 				loginUser = {

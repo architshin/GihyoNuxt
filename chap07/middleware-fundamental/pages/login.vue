@@ -42,7 +42,7 @@ const onLoginButtonClick = async (): Promise<void> => {
 			//ログインユーザ情報をクッキーに格納。
 			const loginUserCookie = useCookie<User|null>("loginUser");
 			loginUserCookie.value = asyncData.data.value.user;
-			//ログイントークン文字列をクッキーに格納。
+			//アクセストークン文字列をクッキーに格納。
 			const loginTokenCookie = useCookie<string|null>("loginToken");
 			loginTokenCookie.value = asyncData.data.value.token;
 			//トップ画面に遷移
