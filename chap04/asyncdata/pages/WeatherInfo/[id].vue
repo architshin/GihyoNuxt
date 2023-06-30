@@ -16,15 +16,15 @@ const asyncData = await useAsyncData(
 	(): Promise<any> => {
 		const weatherInfoUrl = "https://api.openweathermap.org/data/2.5/weather";
 		const params:{
-			lang: string,
-			q: string,
-			appId: string
+			lang: string;
+			q: string;
+			appid: string;
 		} =
 		{
 			lang: "ja",
 			q: selectedCity.value.q,
 			//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-			appId: "xxxxxx"
+			appid: "xxxxxx"
 		}
 		const queryParams = new URLSearchParams(params);
 		const urlFull = `${weatherInfoUrl}?${queryParams}`;
