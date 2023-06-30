@@ -8,10 +8,15 @@ interface Props {
 	note?: string;
 }
 
-//Emitインターフェースの定義。
-interface Emits {
-	(event: "incrementPoint", id: number): void;
-}
+//Emitsインターフェースの定義。
+// interface Emits {
+// 	(event: "incrementPoint", id: number): void;
+// }
+
+//Emits型を定義。
+type Emits = {
+	incrementPoint: [id: number];
+};
 
 //Propsオブジェクトの設定。
 const props = defineProps<Props>();
