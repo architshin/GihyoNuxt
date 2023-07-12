@@ -6,18 +6,18 @@ export const useWeatherInfoFetcher = (city: City) => {
 		`useWeatherInfoFetcher-${city.id}`,
 		(): Promise<any> => {
 			const params:{
-				lang: string,
-				q: string,
-				appId: string
+				lang: string;
+				q: string;
+				appid: string;
 			} =
 			{
 				lang: "ja",
 				q: city.q,
-				appId: config.weathermapAppid
+				appid: config.public.weathermapAppid
 			}
 			const queryParams = new URLSearchParams(params);
 			// const urlFull = `${weatherInfoUrl}?${queryParams}`;
-			const urlFull = `${config.weatherInfoUrl}?${queryParams}`;
+			const urlFull = `${config.public.weatherInfoUrl}?${queryParams}`;
 			const response = $fetch(urlFull);
 			return response;
 		},
