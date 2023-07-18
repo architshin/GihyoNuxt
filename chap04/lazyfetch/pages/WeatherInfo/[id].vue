@@ -11,15 +11,15 @@ const selectedCity = computed(
 );
 
 const params:{
-	lang: string,
-	q: string,
-	appId: string
+	lang: string;
+	q: string;
+	appid: string;
 } =
 {
 	lang: "ja",
 	q: selectedCity.value.q,
 	//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
-	appId: "xxxxxx"
+	appid: "xxxxxx"
 }
 
 const asyncData = useLazyFetch(

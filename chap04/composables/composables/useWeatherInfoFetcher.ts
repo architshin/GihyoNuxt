@@ -7,20 +7,20 @@ export const useWeatherInfoFetcher = (city: City) => {
 		(): Promise<any> => {
 			// const weatherInfoUrl = "https://api.openweathermap.org/data/2.5/weather";
 			const params:{
-				lang: string,
-				q: string,
-				appId: string
+				lang: string;
+				q: string;
+				appid: string;
 			} =
 			{
 				lang: "ja",
 				q: city.q,
 				//APIキーのクエリパラメータ。ここに各自の文字列を記述する!!
 				// appId: "xxxxxx"
-				appId: config.weathermapAppid
+				appid: config.public.weathermapAppid
 			}
 			const queryParams = new URLSearchParams(params);
 			// const urlFull = `${weatherInfoUrl}?${queryParams}`;
-			const urlFull = `${config.weatherInfoUrl}?${queryParams}`;
+			const urlFull = `${config.public.weatherInfoUrl}?${queryParams}`;
 			const response = $fetch(urlFull);
 			return response;
 		},
@@ -37,17 +37,17 @@ export const useWeatherInfoFetcher = (city: City) => {
 // export const useWeatherInfoFetcher = (city: City) => {
 // 	const config = useRuntimeConfig();
 // 	const params:{
-// 		lang: string,
-// 		q: string,
-// 		appId: string
+// 		lang: string;
+// 		q: string;
+// 		appid: string;
 // 	} =
 // 	{
 // 		lang: "ja",
 // 		q: city.q,
-// 		appId: config.weathermapAppid
+// 		appid: config.public.weathermapAppid
 // 	}
 // 	const asyncData = useLazyFetch(
-// 		"https://api.openweathermap.org/data/2.5/weather",
+// 		config.public.weatherInfoUrl,
 // 		{
 // 			key: `useWeatherInfoFetcher-${city.id}`,
 // 			params: params,
